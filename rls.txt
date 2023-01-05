@@ -1,0 +1,122 @@
+cd
+• csh
+• source /home/MentorGraphics/cshrc/hep.cshrc
+• sedit (to open Schematic editor)
+
+in S-Edit window, go to File → New → New Library, click on browse icon to 
+select your Folder to save library → give library name (for example: inverter) →
+OK
+
+To add Generic_250nm_Devices library
+➢ Right click on your Library Name → click on Add library, click on browse icon 
+to select Generic_250nm_Devices library from the following path.
+root → Tanner_EDA → Tanner_Tools_v2018.3 → Process → Generic_250nm →
+Generic_ 250nm_Devices → OK
+
+
+Generic_250nm_Devices
+ii. Misc
+iii. SPICE_Sources
+iv. SPICE_Measure
+v. SPICE_Plot
+
+To create schematic:
+❖ In S-Edit window, go to Cell → New View (press n from the keyboard), give cell name
+→ OK
+Library → inverter (for example)
+Cell → inv (for example)
+View Type → Schematic
+
+Go to Tools → Design Check → View. 
+❖ Go to setup → SPICE Simulation
+➢ Select General
+▪ Enable waveform voltage probing → True
+▪ Click on browse icon to select library from the following path.
+root → Tanner_EDA → Tanner_Tools_v2018.3 → Process →
+Generic_250nm → Models → Generic_250nm.lib → OK
+Click on the library path, at the end give space & type TT
+
+
+-----------------------------------------------------------------------------
+
+Close S-Edit window
+❖ Type ledit in open in Terminal window
+❖ L-Edit window will open, minimize open in terminal window
+❖ In L-Edit window, go to File → New → Design
+
+In New Design window give the following parameters 
+Name → inv_lay (for example) 
+Path → browse your folder
+Technology reference → OpenAcess referenced libraries → ok
+
+Setup Technology Reference window will open, select Generic_250nm_Devices →
+include → OK
+
+
+❖ Go to Cell → New, give the following parameters
+Cell name → inv (for example) (don’t change any other parameters)
+(Provide cell name same as the schematic design cell name
+
+In SDL navigator window, click on Load Netlist
+
+❖ Go to Netlist tab give the following parameters
+➢ Select .sp file from your folder
+➢ File format → T-Spice
+❖ Go to Layout tab give the following parameters
+Layer → Metal1: drawing
+➢ Size → 0.250 Microns → OK.
+ after aligning
+In SDL navigator window, click on Route All icon
+
+
+Save the layout design
+❖ Go to File → Export Mask Data → GDSII
+
+ Save file as inv.gds (for example) in your folder (don’t change any other parameters)
+❖ Export
+--------------------------------------------------------------------------
+DRC (Design Rule Check):
+❖ In the layout window, click on Run Calibre DRC icon 
+➢ Click on rules → browse rules file from library
+root → Tanner_EDA → Tanner_Tools_v2018.3 → Process → Generic_250nm 
+→ Rules → calibre → Generic_250nm_DRC.cal → ok
+Click on Inputs → de-select export from layout viewer → browse layout file 
+from your folder, (inv.gds file) → ok
+➢ Click on Run DRC
+
+LVS (Layout vs Schematic):
+❖ In the layout window, click on Run Calibre LVS icon 
+➢ Click on rules → browse rules file from library
+root → Tanner_EDA → Tanner_Tools_v2018.3 → Process → Generic_250nm 
+→ Rules → calibre → Generic_250nm_LVS.cal → ok
+
+➢ Click on Inputs
+▪ Go to Layout tab → de-select export from layout viewer → browse 
+layout file from your folder, (inv.gds file)
+
+Go to Netlist tab → Browse netlist file from your folder (.sp file) → Add 
+→ OK
+
+Click on Run LVS
+------------------------------------------------------------------
+PEX (Parasitic Extraction):
+❖ In the layout window, click on Run Calibre PEX icon 
+➢ Click on rules → browse rules file from library
+root → Tanner_EDA → Tanner_Tools_v2018.3 → Process → Generic_250nm →
+Rules → calibre → Generic_250nm_xRC.cal → ok
+
+Click on Inputs
+▪ Go to layout tab → de-select export from layout viewer → browse 
+layout file from your folder, (inv.gds file)
+Go to netlist tab → Browse netlist file from your folder (.sp file) → Add 
+→ OK
+Click on Run PEX
+
+
+
+
+
+
+
+
+
